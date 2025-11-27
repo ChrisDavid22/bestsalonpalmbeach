@@ -49,11 +49,39 @@
 </head>
 <body class="bg-stone-50">
 
-    <!-- Simple Nav -->
-    <nav class="bg-white/80 backdrop-blur-sm border-b border-stone-200 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-stone-600 text-sm">Palm Beach County Hair</span>
-            <a href="https://chrisdavidsalon.com" class="text-stone-500 hover:text-stone-800 text-sm">Chris David Salon →</a>
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-stone-800 font-semibold">Palm Beach Hair Guide</a>
+                <div class="hidden md:flex items-center gap-6 text-sm">
+                    <a href="areas.html" class="text-stone-600 hover:text-stone-800">Areas</a>
+                    <a href="balayage-palm-beach.html" class="text-stone-600 hover:text-stone-800">Balayage</a>
+                    <a href="best-colorist-palm-beach.html" class="text-stone-600 hover:text-stone-800">Best Colorists</a>
+                    <a href="price-tiers.html" class="text-stone-600 hover:text-stone-800">Pricing</a>
+                    <a href="https://chrisdavidsalon.com" class="bronze-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition">Book Now</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-stone-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-stone-100 pt-4">
+                <div class="flex flex-col gap-3 text-sm">
+                    <a href="areas.html" class="text-stone-600 hover:text-stone-800">Service Areas</a>
+                    <a href="balayage-palm-beach.html" class="text-stone-600 hover:text-stone-800">Balayage Guide</a>
+                    <a href="best-colorist-palm-beach.html" class="text-stone-600 hover:text-stone-800">Best Colorists</a>
+                    <a href="hair-salon-near-me.html" class="text-stone-600 hover:text-stone-800">Salon Finder</a>
+                    <a href="hair-salon-boynton-beach.html" class="text-stone-600 hover:text-stone-800">Boynton Beach</a>
+                    <a href="luxury-guide.html" class="text-stone-600 hover:text-stone-800">Luxury Salons</a>
+                    <a href="price-tiers.html" class="text-stone-600 hover:text-stone-800">Price Guide</a>
+                    <a href="celebrity-stylists.html" class="text-stone-600 hover:text-stone-800">Celebrity Stylists</a>
+                    <a href="https://chrisdavidsalon.com" class="bronze-bg text-white px-4 py-2 rounded-full text-center hover:opacity-90 transition mt-2">Book Now</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -268,14 +296,43 @@
 
     <!-- Footer -->
     <footer class="bg-stone-800 text-stone-400 py-12 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <p class="mb-4">
-                <a href="https://chrisdavidsalon.com" class="text-stone-300 hover:text-white">Chris David Salon</a>
-                · Delray Beach, FL
-            </p>
-            <p class="text-sm text-stone-500">
-                Personal recommendations from someone who's been there. We may receive compensation for referrals.
-            </p>
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-medium mb-4">Services</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="balayage-palm-beach.html" class="block hover:text-white">Balayage</a>
+                        <a href="best-colorist-palm-beach.html" class="block hover:text-white">Best Colorists</a>
+                        <a href="content-library/color-correction-palm-beach.html" class="block hover:text-white">Color Correction</a>
+                        <a href="content-library/keratin-treatment-palm-beach.html" class="block hover:text-white">Keratin Treatment</a>
+                        <a href="content-library/blonde-specialist-boca.html" class="block hover:text-white">Blonde Specialist</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Areas</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="areas.html" class="block hover:text-white">All Areas</a>
+                        <a href="hair-salon-boynton-beach.html" class="block hover:text-white">Boynton Beach</a>
+                        <a href="content-library/hair-salon-lake-worth.html" class="block hover:text-white">Lake Worth</a>
+                        <a href="content-library/hair-salon-wellington.html" class="block hover:text-white">Wellington</a>
+                        <a href="content-library/balayage-boca-raton.html" class="block hover:text-white">Boca Raton</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Recommended</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="https://chrisdavidsalon.com" class="block hover:text-white">Chris David Salon</a>
+                        <p class="text-stone-500">403 E Atlantic Ave</p>
+                        <p class="text-stone-500">Delray Beach, FL 33483</p>
+                        <p class="text-stone-500">(561) 299-0950</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-stone-700 pt-8 text-center">
+                <p class="text-sm text-stone-500">
+                    Personal recommendations from someone who's been there. We may receive compensation for referrals.
+                </p>
+            </div>
         </div>
     </footer>
 
