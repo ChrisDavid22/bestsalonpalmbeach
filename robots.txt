@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bestsalonpalmbeach.com/sitemap.xml
+Sitemap: https://www.bestsalonpalmbeach.com/sitemap.xml
