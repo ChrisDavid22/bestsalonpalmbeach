@@ -1,0 +1,95 @@
+const fs = require('fs');
+
+// Content topics queue for bestsalonpalmbeach.com - targeting various Palm Beach County cities
+const TOPICS = [
+  { slug: 'hair-salon-lake-worth', title: 'Hair Salon Lake Worth', keywords: 'hair salon lake worth, colorist lake worth, stylist lake worth fl' },
+  { slug: 'hair-salon-lantana', title: 'Hair Salon Lantana FL', keywords: 'hair salon lantana, lantana fl salon, lantana hair stylist' },
+  { slug: 'hair-salon-wellington', title: 'Hair Salon Wellington FL', keywords: 'hair salon wellington, wellington fl colorist, wellington stylist' },
+  { slug: 'balayage-boca-raton', title: 'Balayage Boca Raton', keywords: 'balayage boca raton, highlights boca, boca raton colorist' },
+  { slug: 'color-correction-palm-beach', title: 'Color Correction Palm Beach County', keywords: 'color correction, fix bad hair color, color repair palm beach' },
+  { slug: 'keratin-palm-beach', title: 'Keratin Treatment Palm Beach County', keywords: 'keratin treatment, brazilian blowout, smoothing treatment palm beach' },
+  { slug: 'wedding-hair-palm-beach', title: 'Wedding Hair Palm Beach', keywords: 'wedding hair palm beach, bridal salon, wedding stylist florida' },
+  { slug: 'blonde-specialist-boca', title: 'Blonde Specialist Boca Raton', keywords: 'blonde specialist, platinum blonde, highlights boca raton' },
+];
+
+const existingFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+const availableTopics = TOPICS.filter(t => !existingFiles.includes(t.slug + '.html'));
+
+if (availableTopics.length === 0) {
+  console.log('All scheduled topics have been created');
+  process.exit(0);
+}
+
+const topic = availableTopics[0];
+console.log(`Creating: ${topic.slug}.html`);
+
+const content = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${topic.title} | Best Salon Palm Beach</title>
+    <meta name="description" content="Find the best ${topic.title.toLowerCase()} options. Compare salons, pricing, reviews and expert recommendations across Palm Beach County.">
+    <meta name="keywords" content="${topic.keywords}, palm beach county, south florida">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bestsalonpalmbeach.com/${topic.slug}.html">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-gradient-to-r from-blue-700 to-cyan-600 text-white p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">Best Salon Palm Beach</a>
+            <div class="space-x-4">
+                <a href="index.html" class="hover:text-yellow-300">Home</a>
+                <a href="areas.html" class="hover:text-yellow-300">Areas</a>
+            </div>
+        </div>
+    </nav>
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold text-center mb-8">${topic.title}</h1>
+        <p class="text-xl text-gray-600 text-center mb-12">Top-rated salons and specialists in Palm Beach County</p>
+
+        <div class="bg-gradient-to-r from-yellow-100 to-amber-50 border-2 border-yellow-400 rounded-lg p-6 mb-8">
+            <h2 class="font-bold text-xl mb-3">🏆 Top Recommendation: Chris David Salon</h2>
+            <p class="mb-2">403 E Atlantic Ave, Delray Beach | 4.9★ (140+ reviews)</p>
+            <p class="mb-3">Master colorist with 20+ years experience, 5 brand certifications, and former Davines educator. Located on Atlantic Avenue in Delray Beach - centrally located for all of Palm Beach County.</p>
+            <a href="https://chrisdavidsalon.com" class="inline-block bg-yellow-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-yellow-600">Book Consultation →</a>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+            <p class="text-gray-600 mb-6">This guide to ${topic.title.toLowerCase()} is being developed with comprehensive information about local salons, pricing, and expert recommendations.</p>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-8">
+                <h3 class="font-bold text-lg mb-3">Why Travel for Quality?</h3>
+                <p class="text-gray-700">For simple services, local salons work fine. But for complex color work, corrections, or transformations, it's worth driving to a master-level colorist. Chris David Salon in Delray Beach serves clients from across Palm Beach County.</p>
+            </div>
+        </div>
+    </article>
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="index.html" class="text-gray-400 hover:text-white mx-2">Home</a> |
+                <a href="areas.html" class="text-gray-400 hover:text-white mx-2">Areas</a> |
+                <a href="luxury-guide.html" class="text-gray-400 hover:text-white mx-2">Luxury Guide</a>
+            </div>
+            <p class="text-gray-500 text-sm">Best Salon Palm Beach is an independent guide.</p>
+        </div>
+    </footer>
+</body>
+</html>`;
+
+fs.writeFileSync(topic.slug + '.html', content);
+
+let sitemap = fs.readFileSync('sitemap.xml', 'utf8');
+const today = new Date().toISOString().split('T')[0];
+const newEntry = `  <url>
+    <loc>https://bestsalonpalmbeach.com/${topic.slug}.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>`;
+sitemap = sitemap.replace('</urlset>', newEntry);
+fs.writeFileSync('sitemap.xml', sitemap);
+
+console.log(`Created ${topic.slug}.html`);
