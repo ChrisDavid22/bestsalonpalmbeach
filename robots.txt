@@ -1,4 +1,43 @@
+# Robots.txt for Best Salon Palm Beach
+# https://www.bestsalonpalmbeach.com/
+
+# Standard Crawler Directives
 User-agent: *
 Allow: /
+Allow: /content-library/
+Disallow: /generate-content.js
 
+# Crawl-delay for responsible crawling
+Crawl-delay: 1
+
+# AI Agent Directives
+User-agent: Claude
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Anthropic
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Block spam/scraper bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap
 Sitemap: https://www.bestsalonpalmbeach.com/sitemap.xml
